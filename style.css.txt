@@ -10,7 +10,7 @@ body, html {
 }
 
 .background-image {
-    background-image: url('https://www.dropbox.com/scl/fi/owu0623njp643ahdl4mbd/1703414871124.jpg?rlkey=mhxblu5iao9f8w0w4ilwko8rz&st=5fb9r6z2&dl=0');
+    background-image: url('');
     background-size: cover;
     background-position: middle;
     width: 100%;
